@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShortLinks</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+    <div class="text-field">
+        <label class="text-field__label" for="URL">Ваш URL</label>
+        <input class="text-field__input" type="text" name="URLold" id="URLold" placeholder="URL">
+    </div>
+
+    <script>
+            
+
+            document.getElementById("URLold").addEventListener("keydown", async function(event){
+                
+                
+                if (event.key === "Enter"){
+                    const UrlOld = this.value;
+                    const response = await fetch("/old", {
+                        method: "POST",
+                        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                        body: JSON.stringify({ 
+                        URLOld: UrlOld
+                    })
+                    });
+
+                    const data = response.json();
+                }
+            });
+            
+            
+        
+
+
+    </script>
+</body>
+</html>
