@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request, Body, Response
 from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 import random
 import asyncio
 import string
@@ -17,13 +18,22 @@ ABC = string.ascii_letters
 #Словарь ссылок
 url_mapping = {} # {abcd : https://pornhub.com}
 
+#app.mount("/", StaticFiles(directory="Static", html=True))
+
+
 @app.get("/")
 def show_main_page():
     return FileResponse(r"Static/index.html")
 
 @app.get("/style.css")
-def show_main_page():
+def show_style_page():
     return FileResponse(r"Static/style.css")
+
+@app.get("/Scripts.js")
+def show_script_page():
+    return FileResponse(r"Static/Scripts.js")
+
+
 
 dataOriginal = db.chek_URL()
 for i in dataOriginal:
@@ -69,13 +79,22 @@ async def post_old_URL(data=Body()):
             pass
         else:
             db.add_URL(oldURL, endpointgenerate)
-            await get_new_url(endpointgenerate)
+            await get_new_url()
         url_mapping[endpointgenerate] = oldURL
 
 
-@app.get("/")
-async def get_new_url(data):
-    result = {"message" : "http://127.0.0.1:8000/"+str(data)}
+@app.get("/dbdata")
+async def get_new_url():
+    ShortURLdata =(db.chek_Short_URL())
+    URLdata = db.chek_URL()
+
+    #result = {"URL" : f"{URLdata}",  
+    #          "ShortURL" : f"{ShortURLdata}"}
+    result = {}
+
+    for i in range(len(URLdata)):
+        result[f"{URLdata[i]}"] = f"{ShortURLdata[i]}"
+
     return JSONResponse(content=result)
 
 

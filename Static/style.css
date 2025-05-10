@@ -118,3 +118,12 @@ body, html {
     left: 870px;
     z-index: 200;
 }
+
+.TextFild{
+    z-index: 500;
+}
+
+p {
+    color: black;
+    z-index: 500;
+}
