@@ -127,3 +127,35 @@ p {
     color: black;
     z-index: 500;
 }
+
+
+.TextFild{
+    position: absolute;
+    top: 40%;
+    left: 54%;
+    margin-right: -50%;
+    transform: translate(-70%, 70%);
+    width: 20%; height: 20%;
+    z-index: 400;
+}
+
+
+.Result{
+    position: relative;
+    color: black;
+    margin-left: -50%;
+    margin: 0;
+    width: 200%;
+    height: 40%;
+    font-family: sans-serif;
+    
+    z-index: 400;
+}
+
+.under_line{
+    position: absolute;
+    top: 42%;
+    left: -6%;
+    width: 115%; border-top: 3px solid #626263;
+}
+
