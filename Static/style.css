@@ -18,7 +18,7 @@ body, html {
 
 
 .text-field__input{
-
+    font-size: 130%;
     margin: 0;
     width: 200%;
     height: 40%;
@@ -26,8 +26,9 @@ body, html {
 }
 
 ::placeholder{
+    position: relative;
     color: rgb(0, 51, 51);
-    padding: 43%;
+    padding: 40%;
 }
 
 .Parent {
