@@ -28,4 +28,3 @@ document.getElementById("URLold").addEventListener("keydown", async function(eve
     }
 });
 
-//https://pythonru.com/osnovy/python-join
